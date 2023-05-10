@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-
-sudo sed -i 's/listen 8000/listen 80/g' /etc/nginx/sites-enabled/default
-sudo sed -o 's/listen \[::\]:8000/listen \[::\]:80/g' /etc/nginx/sites-enabled/default
-pgrep nginx -o > /run/nginx.pid
-nginx -s reload
-echo '' > /run/nginx.pid
+#find out what’s keeping your Ubuntu container’s Nginx
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart 
