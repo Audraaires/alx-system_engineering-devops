@@ -1,0 +1,13 @@
+[Unit]
+Description=Gunicorn instance to serve Airbnb application
+After=network.target
+
+[Service]
+User=<vagrant>
+Group=www-data
+WorkingDirectory=/home/vagrant/web_dynamic
+Environment="PATH=/home/<vagrant/web_dynamic/venv/bin"
+ExecStart=/home/<vagrant/web_dynamic/venv/bin/gunicorn -w 3 --bind 0.0.0.0:5003 --error-logfile /tmp/airbnb-error.log --access-logfile /tmp/airbnb-access.log 2-hbnb:app
+
+[Install]
+WantedBy=multi-user.target
